@@ -2,3 +2,13 @@
   <span fxFlex>Lazy Time Tracker</span>
   <mat-icon fxFlex="0 0 auto">menu</mat-icon>
 </mat-toolbar>
+
+<mat-sidenav-container>
+  <button mat-button (click)="sidenav.toggle()">toggle sidenav</button>
+
+  <mat-sidenav #sidenav position="end">
+    Sidenav
+  </mat-sidenav>
+
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
