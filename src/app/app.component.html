@@ -8,17 +8,17 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav position="end">
     <mat-nav-list>
-      <a mat-list-item href="/">
+      <a mat-list-item routerLink="/">
         Dashboard
       </a>
-      <a mat-list-item href="/activites">
+      <a mat-list-item routerLink="/activities">
         Activites
       </a>
-      <a mat-list-item href="/statistics">
+      <a mat-list-item routerLink="/statistics">
         Statistics
       </a>
       <mat-divider></mat-divider>
-      <a mat-list-item href="/{{plugin.identifier}}" *ngFor="let plugin of plugins">
+      <a mat-list-item routerLink="/{{plugin.identifier}}" *ngFor="let plugin of plugins">
         {{plugin.name}}
       </a>
     </mat-nav-list>

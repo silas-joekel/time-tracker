@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { APP_ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot(APP_ROUTES)
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
