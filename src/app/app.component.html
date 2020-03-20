@@ -1,13 +1,27 @@
-<mat-toolbar color="primary" fxLayout="row">
-  <span fxFlex>Lazy Time Tracker</span>
-  <mat-icon fxFlex="0 0 auto">menu</mat-icon>
+<mat-toolbar color="primary">
+  <span class="app-title">Lazy Time Tracker</span>
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <button mat-button (click)="sidenav.toggle()">toggle sidenav</button>
-
   <mat-sidenav #sidenav position="end">
-    Sidenav
+    <mat-nav-list>
+      <a mat-list-item href="/">
+        Dashboard
+      </a>
+      <a mat-list-item href="/activites">
+        Activites
+      </a>
+      <a mat-list-item href="/statistics">
+        Statistics
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="/{{plugin.identifier}}" *ngFor="let plugin of plugins">
+        {{plugin.name}}
+      </a>
+    </mat-nav-list>
   </mat-sidenav>
 
   <router-outlet></router-outlet>
