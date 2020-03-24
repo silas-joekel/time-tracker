@@ -3,8 +3,8 @@ import { StatisticsComponent } from './statistics.component';
 
 export const STATISTICS_ROUTES: Routes = [
     {
-        path: '',
         component: StatisticsComponent,
+        path: '',
         pathMatch: 'full',
     },
 ];

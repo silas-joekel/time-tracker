@@ -1,7 +1,7 @@
 {
   "extends": "tslint:recommended",
   "rules": {
-    "array-type": false,
+    "array-type": [true, "array"],
     "arrow-parens": false,
     "deprecation": {
       "severity": "warning"
@@ -43,7 +43,7 @@
         ]
       }
     ],
-    "no-consecutive-blank-lines": false,
+    "no-consecutive-blank-lines": true,
     "no-console": [
       true,
       "debug",
@@ -65,8 +65,8 @@
       true,
       "as-needed"
     ],
-    "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "object-literal-sort-keys": true,
+    "ordered-imports": true,
     "quotemark": [
       true,
       "single"
