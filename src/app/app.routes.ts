@@ -7,14 +7,14 @@ export const APP_ROUTES: Routes = [
     {
         path: '',
         component: DashboardComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
     },
     {
         path: 'activities',
-        children: ACTIVITIES_ROUTES
+        children: ACTIVITIES_ROUTES,
     },
     {
         path: 'statistics',
-        children: STATISTICS_ROUTES
-    }
+        children: STATISTICS_ROUTES,
+    },
 ];

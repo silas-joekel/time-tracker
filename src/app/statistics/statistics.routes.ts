@@ -5,6 +5,6 @@ export const STATISTICS_ROUTES: Routes = [
     {
         path: '',
         component: StatisticsComponent,
-        pathMatch: 'full'
-    }
+        pathMatch: 'full',
+    },
 ];

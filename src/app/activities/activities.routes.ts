@@ -5,6 +5,6 @@ export const ACTIVITIES_ROUTES: Routes = [
     {
         path: '',
         component: ActivitiesComponent,
-        pathMatch: 'full'
-    }
+        pathMatch: 'full',
+    },
 ];

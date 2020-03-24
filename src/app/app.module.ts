@@ -23,13 +23,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
   ],
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
