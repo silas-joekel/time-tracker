@@ -13,11 +13,16 @@ import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { CurrentActivityComponent } from './dashboard/current-activity/current-activity.component';
+import { SuggestedActivityComponent } from './dashboard/suggested-activity/suggested-activity.component';
+
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     DashboardComponent,
+    CurrentActivityComponent,
+    SuggestedActivityComponent,
   ],
   imports: [
     BrowserModule,
