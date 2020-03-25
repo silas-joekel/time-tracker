@@ -1,6 +1,7 @@
 ![GitHub](https://img.shields.io/github/license/silas-joekel/time-tracker?style=plastic)
 ![Netlify](https://img.shields.io/netlify/c3666ae1-35d2-49f6-babf-59b90f2f379e?style=plastic)
 ![Website](https://img.shields.io/website?style=plastic&url=https%3A%2F%2Flazytimetracker.netlify.com)
+[![Sonarcloud](https://sonarcloud.io/api/project_badges/measure?project=silas-joekel_time-tracker&metric=alert_status)](https://sonarcloud.io/dashboard?id=silas-joekel_time-tracker)
 
 # TimeTracker
 
