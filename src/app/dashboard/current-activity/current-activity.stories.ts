@@ -5,10 +5,6 @@ export default {
     title: 'Current Activity Component',
 };
 
-export const ComponentWithoutActivity = () => ({
-    component: CurrentActivityComponent,
-});
-
 export const ComponentWithSimpleActivity = () => ({
     component: CurrentActivityComponent,
     props: {
