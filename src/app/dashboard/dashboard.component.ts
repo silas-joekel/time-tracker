@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RunningActivity } from '../interfaces/activity.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
-  currentActivities = [];
-  suggestedActivities = [];
+  currentActivities: RunningActivity[] = [
+    {
+      id: 'Work',
+      start: new Date('12 Mar 2020 14:20:00 GMT'),
+    },
+  ];
+  suggestedActivities: string[] = [
+    'Work',
+    'Sleep',
+    'Eat',
+  ];
 
   constructor() { }
 

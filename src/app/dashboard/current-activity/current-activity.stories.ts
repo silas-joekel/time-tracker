@@ -5,7 +5,7 @@ export default {
     title: 'Current Activity Component',
 };
 
-export const ComponentWithSimpleActivity = () => ({
+export const Basic = () => ({
     component: CurrentActivityComponent,
     props: {
         activity: {
@@ -15,12 +15,6 @@ export const ComponentWithSimpleActivity = () => ({
     },
 });
 
-export const ComponentWithPluginActivity = () => ({
+export const ComponentWithoutActivityInput = () => ({
     component: CurrentActivityComponent,
-    props: {
-        activity: {
-            id: 'Sleep',
-            start: Date.parse('13 Mar 2020 00:30:00 GMT'),
-        },
-    },
 });
