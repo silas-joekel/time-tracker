@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { RunningActivity } from 'src/app/interfaces/activity.interface';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -7,6 +8,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   templateUrl: './current-activity.component.html',
 })
 export class CurrentActivityComponent implements OnInit {
+  @Input() activity: RunningActivity;
 
   constructor() { }
 

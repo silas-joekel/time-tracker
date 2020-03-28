@@ -1,13 +1,19 @@
 <section id="current-activities">
     <h2>Current Activities:</h2>
     <p *ngIf="currentActivities.length === 0">No activities are active.</p>
-    <app-current-activity *ngFor="let activity of currentActivities"></app-current-activity>
+    <app-current-activity
+        *ngFor="let activity of currentActivities"
+        [activity]="activity">
+    </app-current-activity>
 </section>
 
 <section id="suggested-activities">
     <h2>Suggested Activities:</h2>
     <p *ngIf="suggestedActivities.length === 0">No activity suggestions.</p>
-    <app-suggested-activity *ngFor="let activity of suggestedActivities"></app-suggested-activity>
+    <app-suggested-activity
+        *ngFor="let activity of suggestedActivities"
+        [activity]="activity">
+    </app-suggested-activity>
 </section>
 
 <section id="add-activity">
