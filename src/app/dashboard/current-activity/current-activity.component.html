@@ -1,1 +1,15 @@
-<p *ngIf="activity">{{activity.id}}</p>
+<mat-card *ngIf="activity">
+    <div class="activity-title">
+        <b>{{activity.id}}</b>
+        <span class="activity-start-time">
+            (started {{activity.start | timeAgo}})
+        </span>
+    </div>
+    
+    <button mat-icon-button (click)="stopActivity()" color="accent">
+        <mat-icon>stop</mat-icon>
+    </button>
+    <button mat-icon-button (click)="deleteActivity()" color="accent">
+        <mat-icon>delete</mat-icon>
+    </button>
+</mat-card>

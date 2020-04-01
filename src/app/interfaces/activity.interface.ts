@@ -1,7 +1,8 @@
 export interface Activity {
+    id: string;
     start: Date;
     end: Date;
-    id: string;
+    label: string;
 }
 
 export type RunningActivity = Omit<Activity, 'end'>;

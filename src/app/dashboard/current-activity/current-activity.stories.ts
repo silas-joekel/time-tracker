@@ -1,7 +1,20 @@
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { moduleMetadata } from '@storybook/angular';
+
 import { CurrentActivityComponent } from './current-activity.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 export default {
     component: CurrentActivityComponent,
+    decorators: [
+        moduleMetadata({
+            declarations: [],
+            imports: [CommonModule, MatButtonModule, MatCardModule, MatIconModule, SharedModule],
+        }),
+    ],
     title: 'Current Activity Component',
 };
 

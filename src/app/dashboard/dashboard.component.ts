@@ -9,7 +9,8 @@ import { RunningActivity } from '../interfaces/activity.interface';
 export class DashboardComponent implements OnInit {
   currentActivities: RunningActivity[] = [
     {
-      id: 'Work',
+      id: '123',
+      label: 'Work',
       start: new Date('12 Mar 2020 14:20:00 GMT'),
     },
   ];
