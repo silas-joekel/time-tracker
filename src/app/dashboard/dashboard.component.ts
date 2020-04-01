@@ -15,8 +15,8 @@ export class DashboardComponent implements OnInit {
     },
     {
       id: '1234',
-      label: 'Test',
-      start: new Date('31 Mar 2020 14:20:00 GMT'),
+      label: 'Sleep',
+      start: new Date('31 Mar 2020 23:45:00 GMT'),
     },
     {
       id: '12345',
@@ -29,10 +29,16 @@ export class DashboardComponent implements OnInit {
     'Sleep',
     'Eat',
   ];
+  newActivity: string;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  startNewActivity() {
+    console.log(this.newActivity);
+    this.newActivity = '';
   }
 
 }

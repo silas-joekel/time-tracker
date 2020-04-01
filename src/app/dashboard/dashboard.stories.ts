@@ -9,13 +9,25 @@ import { SuggestedActivityComponent } from './suggested-activity/suggested-activ
 
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 export default {
     component: DashboardComponent,
     decorators: [
         moduleMetadata({
             declarations: [CurrentActivityComponent, SuggestedActivityComponent],
-            imports: [CommonModule, MatButtonModule, MatCardModule, MatIconModule, SharedModule],
+            imports: [
+                CommonModule,
+                FormsModule,
+                MatFormFieldModule,
+                MatButtonModule,
+                MatCardModule,
+                MatIconModule,
+                MatInputModule,
+                SharedModule,
+            ],
         }),
     ],
     title: 'Dashboard',
