@@ -1,1 +1,9 @@
-<p *ngIf="activity">{{activity}}</p>
+<mat-card *ngIf="activity">
+    <div class="activity-label">
+        <b>{{activity}}</b>
+    </div>
+
+    <button mat-icon-button (click)="startActivity()" color="accent">
+        <mat-icon>play_arrow</mat-icon>
+    </button>
+</mat-card>

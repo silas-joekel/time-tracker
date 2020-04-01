@@ -27,7 +27,3 @@ export const Basic = () => ({
         },
     },
 });
-
-export const ComponentWithoutActivityInput = () => ({
-    component: CurrentActivityComponent,
-});
