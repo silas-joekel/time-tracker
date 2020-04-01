@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,9 +9,15 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 export class SuggestedActivityComponent implements OnInit {
   @Input() activity: string;
 
+  @Output() startActivity = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  start() {
+    this.startActivity.emit(this.activity);
   }
 
 }

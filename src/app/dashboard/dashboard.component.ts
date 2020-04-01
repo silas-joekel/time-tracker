@@ -13,6 +13,16 @@ export class DashboardComponent implements OnInit {
       label: 'Work',
       start: new Date('12 Mar 2020 14:20:00 GMT'),
     },
+    {
+      id: '1234',
+      label: 'Test',
+      start: new Date('31 Mar 2020 14:20:00 GMT'),
+    },
+    {
+      id: '12345',
+      label: 'New',
+      start: new Date(),
+    },
   ];
   suggestedActivities: string[] = [
     'Work',

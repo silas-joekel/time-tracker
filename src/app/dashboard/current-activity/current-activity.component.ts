@@ -10,21 +10,21 @@ import { RunningActivity } from 'src/app/interfaces/activity.interface';
 export class CurrentActivityComponent implements OnInit {
   @Input() activity: RunningActivity;
 
-  @Output() stop = new EventEmitter<string>();
+  @Output() stopActivity = new EventEmitter<string>();
 
-  @Output() delete = new EventEmitter<string>();
+  @Output() deleteActivity = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  stopActivity() {
-    this.stop.emit(this.activity.id);
+  stop() {
+    this.stopActivity.emit(this.activity.id);
   }
 
-  deleteActivity() {
-    this.delete.emit(this.activity.id);
+  delete() {
+    this.deleteActivity.emit(this.activity.id);
   }
 
 }
