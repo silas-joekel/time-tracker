@@ -22,7 +22,8 @@ export const Basic = () => ({
     component: CurrentActivityComponent,
     props: {
         activity: {
-            id: 'Work',
+            id: '666',
+            label: 'Work',
             start: Date.parse('12 Mar 2020 14:20:00 GMT'),
         },
     },
