@@ -3,7 +3,9 @@
     <p *ngIf="ca.length === 0">No activities are active.</p>
     <app-current-activity
         *ngFor="let activity of ca"
-        [activity]="activity">
+        [activity]="activity"
+        (stopActivity)="stopActivity($event)"
+        (deleteActivity)="deleteActivity($event)">
     </app-current-activity>
 </section>
 
@@ -12,7 +14,8 @@
     <p *ngIf="sa.length === 0">No activity suggestions.</p>
     <app-suggested-activity
         *ngFor="let activity of sa"
-        [activity]="activity">
+        [activity]="activity"
+        (startActivity)="startActivity($event)">
     </app-suggested-activity>
 </section>
 
