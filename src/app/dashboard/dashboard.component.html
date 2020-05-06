@@ -1,17 +1,17 @@
-<section id="current-activities">
+<section id="current-activities" *ngIf="currentActivities | async as ca">
     <h2>Current Activities:</h2>
-    <p *ngIf="currentActivities.length === 0">No activities are active.</p>
+    <p *ngIf="ca.length === 0">No activities are active.</p>
     <app-current-activity
-        *ngFor="let activity of currentActivities"
+        *ngFor="let activity of ca"
         [activity]="activity">
     </app-current-activity>
 </section>
 
-<section id="suggested-activities">
+<section id="suggested-activities" *ngIf="suggestedActivities | async as sa">
     <h2>Suggested Activities:</h2>
-    <p *ngIf="suggestedActivities.length === 0">No activity suggestions.</p>
+    <p *ngIf="sa.length === 0">No activity suggestions.</p>
     <app-suggested-activity
-        *ngFor="let activity of suggestedActivities"
+        *ngFor="let activity of sa"
         [activity]="activity">
     </app-suggested-activity>
 </section>

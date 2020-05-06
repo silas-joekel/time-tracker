@@ -1,7 +1,7 @@
 export interface Activity {
     id: string;
     start: Date;
-    end: Date;
+    end?: Date;
     label: string;
 }
 
