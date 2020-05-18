@@ -6,3 +6,5 @@ export interface Activity {
 }
 
 export type RunningActivity = Omit<Activity, 'end'>;
+
+export type CompletedActivity = Required<Activity>;
