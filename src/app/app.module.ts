@@ -15,6 +15,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
+import { reducer as activitiesReducer } from './store/activities/activities.reducer';
+import { reducers } from './store';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -31,7 +33,7 @@ import { APP_ROUTES } from './app.routes';
     MatSidenavModule,
     MatToolbarModule,
     RouterModule.forRoot(APP_ROUTES),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
   ],
   providers: [],

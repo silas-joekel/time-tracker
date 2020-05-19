@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 
-import { RunningActivity } from '../interfaces/activity.interface';
-import { ActivitiesService } from '../store/activities.service';
+import { RunningActivity } from '../store/activities/activities.interface';
+import { ActivitiesService } from '../store/activities/activities.service';
 
 @Component({
   selector: 'app-dashboard',

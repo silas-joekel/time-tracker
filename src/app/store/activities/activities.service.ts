@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
+import { Store } from '@ngrx/store';
 
-import { Activity } from '../interfaces/activity.interface';
+import { Activity } from './activities.interface';
+import * as fromActions from './activities.actions';
+import { ActivitiesState } from './activities.state';
+import * as fromReducer from './activities.reducer';
 
 @Injectable({
   providedIn: 'root',
@@ -27,24 +31,18 @@ export class ActivitiesService {
     },
   ];
 
-  constructor() { }
+  constructor(private store: Store<ActivitiesState>) { }
 
   startActivity(label: string): void {
-    const activity = {
-      id: Math.random().toString(36).substring(7),
-      start: new Date(),
-      label,
-    };
-
-    this.activities.push(activity);
+    this.store.dispatch(fromActions.startActivity({label}));
   }
 
   stopActivity(id: string): void {
-    console.log('stopping activities is not possible by now');
+    this.store.dispatch(fromActions.stopActivity({ id }));
   }
 
   deleteActivity(id: string): void {
-    console.log('deleting activities is not possible by now');
+    this.store.dispatch(fromActions.deleteActivity({ id }));
   }
 
   getActivityById(id: string): Observable<Activity> {
@@ -52,11 +50,12 @@ export class ActivitiesService {
   }
 
   getActivities(): Observable<Activity[]> {
-    return of(this.activities);
+    return this.store.select(fromReducer.selectAllActivities);
   }
 
   getRunningActivities(): Observable<Activity[]> {
-    return of(this.activities.filter(a => !a.end));
+    // TODO: Running activities functionality
+    return this.getActivities();
   }
 
   getSuggestedActivities(): Observable<string[]> {
