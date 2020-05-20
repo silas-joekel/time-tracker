@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { RunningActivity } from 'src/app/interfaces/activity.interface';
+import { RunningActivity } from '../../store/activities/activities.interface';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

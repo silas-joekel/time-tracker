@@ -3,6 +3,8 @@ import { createReducer, Action, on, createSelector, createFeatureSelector } from
 import { startActivity, stopActivity, deleteActivity } from './activities.actions';
 import * as fromAdapter from './activities.adapter';
 import { ActivitiesState, initialState } from './activities.state';
+import { Activity } from './activities.interface';
+import { Dictionary } from '@ngrx/entity';
 
 const activityReducer = createReducer(
     initialState,
@@ -13,7 +15,10 @@ const activityReducer = createReducer(
             label,
         };
 
-        return fromAdapter.adapter.addOne(activity, state);
+        return {
+            ...fromAdapter.adapter.addOne(activity, state),
+            runningActivityIds: [...state.runningActivityIds, activity.id],
+        };
     }),
     on(stopActivity, (state, { id }) => {
         const update = {
@@ -23,10 +28,16 @@ const activityReducer = createReducer(
             },
         };
 
-        return fromAdapter.adapter.updateOne(update, state);
+        return {
+            ...fromAdapter.adapter.updateOne(update, state),
+            runningActivityIds: [...state.runningActivityIds.filter(e => e !== id)],
+        };
     }),
     on(deleteActivity, (state, { id }) => {
-        return fromAdapter.adapter.removeOne(id, state);
+        return {
+            ...fromAdapter.adapter.removeOne(id, state),
+            runningActivityIds: [...state.runningActivityIds.filter(e => e !== id)],
+        };
     })
 );
 
@@ -34,9 +45,21 @@ export function reducer(state: ActivitiesState | undefined, action: Action) {
     return activityReducer(state, action);
 }
 
-export const getActivitiesState = createFeatureSelector<ActivitiesState>('activitiesState');
+export const getActivitiesState = createFeatureSelector<ActivitiesState>('activities');
 
 export const selectActivityIds = createSelector(getActivitiesState, fromAdapter.selectActivityIds);
 export const selectActivityEntities = createSelector(getActivitiesState, fromAdapter.selectActivityEntities);
 export const selectAllActivities = createSelector(getActivitiesState, fromAdapter.selectAllActivities);
 export const selectActivityCount = createSelector(getActivitiesState, fromAdapter.selectActivityCount);
+
+export const selectRunningActivityIds = createSelector(
+    getActivitiesState,
+    (state: ActivitiesState) => state.runningActivityIds
+);
+export const selectRunningActivities = createSelector(
+    selectActivityEntities,
+    selectRunningActivityIds,
+    (entities: Dictionary<Activity>, ids: string[]) => {
+        return ids.map(id => entities[id]);
+    }
+);

@@ -4,9 +4,9 @@ import { ActivitiesState } from './activities/activities.state';
 import { reducer as ActivitiesReducer } from './activities/activities.reducer';
 
 export interface AppState {
-    activitiesState: ActivitiesState;
+    activities: ActivitiesState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-    activitiesState: ActivitiesReducer,
+    activities: ActivitiesReducer,
 };
