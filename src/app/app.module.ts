@@ -9,14 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgxIndexedDBModule } from 'ngx-indexed-db';
 
 import { environment } from '../environments/environment';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
-import { reducer as activitiesReducer } from './store/activities/activities.reducer';
 import { reducers } from './store';
+import { dbConfig } from './db';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -32,6 +33,7 @@ import { reducers } from './store';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
+    NgxIndexedDBModule.forRoot(dbConfig),
     RouterModule.forRoot(APP_ROUTES),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
