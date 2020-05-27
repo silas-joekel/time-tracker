@@ -1,6 +1,6 @@
 import { createReducer, Action, on, createSelector, createFeatureSelector } from '@ngrx/store';
 
-import { startActivity, stopActivity, deleteActivity } from './activities.actions';
+import { startActivitySuccess, stopActivitySuccess, deleteActivitySuccess } from './activities.actions';
 import * as fromAdapter from './activities.adapter';
 import { ActivitiesState, initialState } from './activities.state';
 import { Activity } from './activities.interface';
@@ -8,23 +8,23 @@ import { Dictionary } from '@ngrx/entity';
 
 const activityReducer = createReducer(
     initialState,
-    on(startActivity, (state, { label }) => {
-        const activity = {
-            id: Math.random().toString(36).substring(7),
-            start: new Date(),
-            label,
+    on(startActivitySuccess, (state, activity) => {
+        const newActivity = {
+            id: activity.id,
+            label: activity.label,
+            start: activity.start,
         };
 
         return {
-            ...fromAdapter.adapter.addOne(activity, state),
+            ...fromAdapter.adapter.addOne(newActivity, state),
             runningActivityIds: [...state.runningActivityIds, activity.id],
         };
     }),
-    on(stopActivity, (state, { id }) => {
+    on(stopActivitySuccess, (state, { id, end }) => {
         const update = {
             id,
             changes: {
-                end: new Date(),
+                end,
             },
         };
 
@@ -33,7 +33,7 @@ const activityReducer = createReducer(
             runningActivityIds: [...state.runningActivityIds.filter(e => e !== id)],
         };
     }),
-    on(deleteActivity, (state, { id }) => {
+    on(deleteActivitySuccess, (state, { id }) => {
         return {
             ...fromAdapter.adapter.removeOne(id, state),
             runningActivityIds: [...state.runningActivityIds.filter(e => e !== id)],
@@ -59,7 +59,7 @@ export const selectRunningActivityIds = createSelector(
 export const selectRunningActivities = createSelector(
     selectActivityEntities,
     selectRunningActivityIds,
-    (entities: Dictionary<Activity>, ids: string[]) => {
+    (entities: Dictionary<Activity>, ids: number[]) => {
         return ids.map(id => entities[id]);
     }
 );

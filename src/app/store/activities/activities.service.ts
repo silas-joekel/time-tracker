@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { Store } from '@ngrx/store';
 
-import { Activity } from './activities.interface';
+import { Activity, RunningActivity } from './activities.interface';
 import * as fromActions from './activities.actions';
 import { ActivitiesState } from './activities.state';
 import * as fromReducer from './activities.reducer';
@@ -18,12 +18,12 @@ export class ActivitiesService {
     this.store.dispatch(fromActions.startActivity({label}));
   }
 
-  stopActivity(id: string): void {
-    this.store.dispatch(fromActions.stopActivity({ id }));
+  stopActivity(activity: RunningActivity): void {
+    this.store.dispatch(fromActions.stopActivity(activity));
   }
 
-  deleteActivity(id: string): void {
-    this.store.dispatch(fromActions.deleteActivity({ id }));
+  deleteActivity(id: number): void {
+    this.store.dispatch(fromActions.deleteActivity({id}));
   }
 
   getActivities(): Observable<Activity[]> {

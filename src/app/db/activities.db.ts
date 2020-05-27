@@ -17,7 +17,7 @@ export const activitiesStoreMeta: ObjectStoreMeta = {
         {
             name: 'end',
             keypath: 'end',
-            options: { unique: false },
+            options: { unique: false, optional: true },
         },
     ],
 };

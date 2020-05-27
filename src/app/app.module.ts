@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 
 import { environment } from '../environments/environment';
@@ -16,7 +17,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
-import { reducers } from './store';
+import { reducers, effects } from './store';
 import { dbConfig } from './db';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { dbConfig } from './db';
     RouterModule.forRoot(APP_ROUTES),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
+    EffectsModule.forRoot(effects),
   ],
   providers: [],
 })

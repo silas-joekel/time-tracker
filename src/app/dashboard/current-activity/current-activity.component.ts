@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { RunningActivity } from '../../store/activities/activities.interface';
+import { RunningActivity, Activity } from '../../store/activities/activities.interface';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,9 +10,9 @@ import { RunningActivity } from '../../store/activities/activities.interface';
 export class CurrentActivityComponent implements OnInit {
   @Input() activity: RunningActivity;
 
-  @Output() stopActivity = new EventEmitter<string>();
+  @Output() stopActivity = new EventEmitter<RunningActivity>();
 
-  @Output() deleteActivity = new EventEmitter<string>();
+  @Output() deleteActivity = new EventEmitter<number>();
 
   constructor() { }
 
@@ -20,7 +20,7 @@ export class CurrentActivityComponent implements OnInit {
   }
 
   stop() {
-    this.stopActivity.emit(this.activity.id);
+    this.stopActivity.emit(this.activity);
   }
 
   delete() {

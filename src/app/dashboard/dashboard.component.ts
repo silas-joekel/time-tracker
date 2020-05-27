@@ -23,11 +23,11 @@ export class DashboardComponent implements OnInit {
     this.activitiesService.startActivity(label);
   }
 
-  stopActivity(id: string): void {
-    this.activitiesService.stopActivity(id);
+  stopActivity(activity: RunningActivity): void {
+    this.activitiesService.stopActivity(activity);
   }
 
-  deleteActivity(id: string): void {
+  deleteActivity(id: number): void {
     this.activitiesService.deleteActivity(id);
   }
 
