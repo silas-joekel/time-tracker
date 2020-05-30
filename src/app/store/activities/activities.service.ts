@@ -39,6 +39,6 @@ export class ActivitiesService {
   }
 
   getSuggestedActivities(): Observable<string[]> {
-    return of(['Eat', 'Sleep', 'Work']);
+    return this.store.select(fromReducer.selectSuggestedActivities);
   }
 }

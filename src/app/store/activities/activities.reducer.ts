@@ -71,3 +71,15 @@ export const selectRunningActivities = createSelector(
         return ids.map(id => entities[id]);
     }
 );
+
+export const selectActivityCountByLabel = createSelector(
+    selectAllActivities,
+    (activities: Activity[]) => activities.reduce((acc, activity) => {
+        acc[activity.label] = acc[activity.label] + 1 || 1;
+        return acc;
+    }, {})
+);
+export const selectSuggestedActivities = createSelector(
+    selectActivityCountByLabel,
+    (groups: { [key: string]: number}) => Object.keys(groups).sort((a: string, b: string) => groups[a] - groups[b]).slice(0, 3)
+);
