@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { of } from 'rxjs/internal/observable/of';
 import { Store } from '@ngrx/store';
 
 import { Activity, RunningActivity } from './activities.interface';
@@ -39,6 +38,6 @@ export class ActivitiesService {
   }
 
   getSuggestedActivities(): Observable<string[]> {
-    return of(['Eat', 'Sleep', 'Work']);
+    return this.store.select(fromReducer.selectSuggestedActivities);
   }
 }
