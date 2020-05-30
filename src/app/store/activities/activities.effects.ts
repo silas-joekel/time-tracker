@@ -6,9 +6,21 @@ import { map, catchError, switchMap } from 'rxjs/operators';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 
 import * as ActivitiesActions from './activities.actions';
+import { Activity } from './activities.interface';
 
 @Injectable()
 export class ActivitiesEffects {
+    @Effect()
+    loadActivities$: Observable<Action> = this.actions$.pipe(
+        ofType(ActivitiesActions.loadActivities),
+        switchMap(() => {
+            return from(this.dbService.getAll('activities')).pipe(
+                map((activities: Activity[]) => ActivitiesActions.loadActivitiesSuccess({ activities })),
+                catchError(() => of(ActivitiesActions.loadActivitiesFailure()))
+            );
+        })
+    );
+
     @Effect()
     startActivity$: Observable<Action> = this.actions$.pipe(
         ofType(ActivitiesActions.startActivity),

@@ -1,6 +1,6 @@
 import { createReducer, Action, on, createSelector, createFeatureSelector } from '@ngrx/store';
 
-import { startActivitySuccess, stopActivitySuccess, deleteActivitySuccess } from './activities.actions';
+import { startActivitySuccess, stopActivitySuccess, deleteActivitySuccess, loadActivitiesSuccess } from './activities.actions';
 import * as fromAdapter from './activities.adapter';
 import { ActivitiesState, initialState } from './activities.state';
 import { Activity } from './activities.interface';
@@ -8,6 +8,14 @@ import { Dictionary } from '@ngrx/entity';
 
 const activityReducer = createReducer(
     initialState,
+    on(loadActivitiesSuccess, (state, props) => {
+        const runningActivityIds = props.activities.filter(a => !a.end).map(a => a.id);
+
+        return {
+            ...fromAdapter.adapter.setAll(props.activities, state),
+            runningActivityIds,
+        };
+    }),
     on(startActivitySuccess, (state, activity) => {
         const newActivity = {
             id: activity.id,

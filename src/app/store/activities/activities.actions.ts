@@ -1,6 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { Activity, RunningActivity } from './activities.interface';
 
+export const loadActivities = createAction('[ACTIVITY] Load Activities');
+export const loadActivitiesSuccess = createAction('[ACTIVITIES] Load Activities Success', props<{activities: Activity[]}>());
+export const loadActivitiesFailure = createAction('[ACTIVITIES] Load Activities Failure');
+
 export const startActivity = createAction('[ACTIVITY] Start Activity', props<Pick<Activity, 'label'>>());
 export const startActivitySuccess = createAction('[ACTIVITIES] Start Activity Success', props<RunningActivity>());
 export const startActivityFailure = createAction('[ACTIVITIES] Start Activity Failure');

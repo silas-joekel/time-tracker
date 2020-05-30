@@ -14,8 +14,12 @@ import * as fromReducer from './activities.reducer';
 export class ActivitiesService {
   constructor(private store: Store<ActivitiesState>) { }
 
+  loadActivities(): void {
+    this.store.dispatch(fromActions.loadActivities());
+  }
+
   startActivity(label: string): void {
-    this.store.dispatch(fromActions.startActivity({label}));
+    this.store.dispatch(fromActions.startActivity({ label }));
   }
 
   stopActivity(activity: RunningActivity): void {
