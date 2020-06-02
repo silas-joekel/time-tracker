@@ -19,6 +19,7 @@ import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { reducers, effects } from './store';
 import { dbConfig } from './db';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -39,6 +40,7 @@ import { dbConfig } from './db';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     EffectsModule.forRoot(effects),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
 })
