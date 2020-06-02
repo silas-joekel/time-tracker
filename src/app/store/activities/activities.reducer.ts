@@ -81,5 +81,5 @@ export const selectActivityCountByLabel = createSelector(
 );
 export const selectSuggestedActivities = createSelector(
     selectActivityCountByLabel,
-    (groups: { [key: string]: number}) => Object.keys(groups).sort((a: string, b: string) => groups[a] - groups[b]).slice(0, 3)
+    (groups: { [key: string]: number}) => Object.keys(groups).sort((a: string, b: string) => groups[b] - groups[a]).slice(0, 3)
 );
