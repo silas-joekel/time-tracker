@@ -40,4 +40,8 @@ export class ActivitiesService {
   getSuggestedActivities(): Observable<string[]> {
     return this.store.select(fromReducer.selectSuggestedActivities);
   }
+
+  getSortedLabels(): Observable<string[]> {
+    return this.store.select(fromReducer.selectSortedActivityLabels);
+  }
 }
