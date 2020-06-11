@@ -20,18 +20,29 @@
 </section>
 
 <section id="add-activity">
-    <mat-form-field id="new-activity-form-field">
-        <mat-label>Start new activity</mat-label>
-        <input matInput type="text" [(ngModel)]="newActivity">
-    </mat-form-field>
-    <button
-        mat-button
-        [disabled]="!newActivity"
-        matSuffix
-        mat-icon-button
-        aria-label="Start new activity"
-        (click)="startNewActivity()"
-        color="accent">
-        <mat-icon>play_arrow</mat-icon>
-    </button>
+    <form id="add-activity-form" (submit)="startNewActivity()">
+        <mat-form-field id="new-activity-form-field">
+            <input
+                type="text"
+                placeholder="Start new activity"
+                aria-label="Start new activity"
+                matInput
+                [formControl]="newActivity"
+                [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredLabels | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <button
+            mat-button
+            matSuffix
+            mat-icon-button
+            aria-label="Start new activity"
+            type="submit"
+            color="accent">
+            <mat-icon>play_arrow</mat-icon>
+        </button>
+    </form>
 </section>

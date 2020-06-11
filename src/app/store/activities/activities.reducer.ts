@@ -72,6 +72,23 @@ export const selectRunningActivities = createSelector(
     }
 );
 
+export const selectActivityLabels = createSelector(
+    selectAllActivities,
+    (activities: Activity[]) => activities.reduce((unique: string[], activity: Activity) => {
+        return unique.includes(activity.label) ? unique : [...unique, activity.label];
+    }, [])
+);
+
+export const selectSortedActivityLabels = createSelector(
+    selectActivityLabels,
+    (labels: string[]) => labels.sort()
+);
+
+export const selectFilteredActivityLabels = createSelector(
+    selectSortedActivityLabels,
+    (labels: string[], props) => labels.filter((label: string) => label.includes(props.filter))
+);
+
 export const selectActivityCountByLabel = createSelector(
     selectAllActivities,
     (activities: Activity[]) => activities.reduce((acc, activity) => {
