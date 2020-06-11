@@ -23,7 +23,7 @@ export class DashboardComponent {
       this.activitiesService.getSortedLabels(),
       this.newActivity.valueChanges.pipe(startWith('')),
     ]).pipe(
-      map(([labels, partial]) => labels.filter((label: string) => label.includes(partial)))
+      map(([labels, partial]) => labels.filter((label: string) => label.toLowerCase().includes(partial.toLowerCase())))
     );
 
   constructor(private readonly activitiesService: ActivitiesService) {}
